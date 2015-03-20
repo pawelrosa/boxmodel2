@@ -1,0 +1,220 @@
+//----------------------------------------------------------------------------//
+// BOXMODEL2 > MIXINS --------------------------------------------------------//
+//----------------------------------------------------------------------------//
+
+@mixin direction-expressions($type, $direction, $value) {
+  $v: $value;
+  $b: null;
+  @if $value != 0 {
+    $v: $value * 1px;
+  }
+  @if $type == border {
+    $b: -width;
+  }
+  @if $direction == all {
+    #{$type}#{$b}: $v !important;
+  } @else if $direction == horizontal {
+    #{$type}-left#{$b}: $v !important;
+    #{$type}-right#{$b}: $v !important;
+  } @else if $direction == vertical {
+    #{$type}-top#{$b}: $v !important;
+    #{$type}-bottom#{$b}: $v !important;
+  } @else {
+    #{$type}-#{$direction}#{$b}: $v !important;
+  }
+}
+
+@mixin direction-classes($type, $value, $res: null) {
+  @if $value > 0 or $type == margin and $value != 0 {
+    $t: str-slice($type, 0, 1);
+    $r: null;
+    @if $res {
+      $r: -#{$res};
+    }
+    @each $direction in $bm-directions {
+      @if $direction == all {
+        .#{$t}#{$r}-#{$value} {
+          @include direction-expressions($type, $direction, $value);
+        }
+      } @else {
+        $d: str-slice($direction, 0, 1);  
+        .#{$t}-#{$d}#{$r}-#{$value} {
+          @include direction-expressions($type, $direction, $value);
+        }
+      }
+    }
+  }
+}
+
+@mixin disabling-classes($type, $res: null) {
+  $value: 0;
+  $t: str-slice($type, 0, 1);
+  $r: null;
+  @if $res {
+    $r: -#{$res};
+  }
+  @each $direction in $bm-directions {
+    $d: str-slice($direction, 0, 1);
+    .n-#{$t}-#{$d}#{$r},
+    .#{$t}-#{$d}#{$r}-#{$value} {
+      @include direction-expressions($type, $direction, $value);
+    }
+  }
+}
+
+@mixin position-classes($value, $res: null) {
+  $directions: top, right, bottom, left;
+  $v: null;
+  $r: null;
+  @if $value != 0 {
+    $v: $value * 1px;
+  }
+  @if $res {
+    $r: -#{$res};
+  }
+  @each $direction in $directions {
+    $d: str-slice($direction, 0, 1);
+    .p#{$d}#{$r}-#{$value} {
+      #{$direction}: $v !important;
+    }
+  }
+}
+
+@mixin dimension-classes($value, $res: null) {
+  @if $value > 0 {
+    $r: null;
+    @if $res {
+      $r: -#{$res};
+    }
+    .w#{$r}-#{$value} {
+      width: $value * 1px !important;
+    }
+    .h#{$r}-#{$value} {
+      height: $value * 1px !important;
+    }
+  }
+}
+
+@mixin print-classes($type, $value, $res: null) {
+  @if $type == position {
+    @include position-classes($value, $res);
+  } @else if $type == dimension {
+    @include dimension-classes($value, $res);
+  } @else {
+    @include direction-classes($type, $value, $res);
+  }
+}
+
+@mixin main-classes($type, $res: null) {
+  @if $bm-values {
+    @each $value in $bm-values {
+      @include print-classes($type, $value, $res);
+    }
+  } @else {
+    $value: $bm-min-value;
+    @while $value < $bm-max-value {
+      @include print-classes($type, $value, $res);
+      $value: $value + $bm-step;
+    }
+    @include print-classes($type, $value, $res);
+  }
+}
+
+@mixin all-disabling-classes($res: null) {
+  $r: null;
+  @if $res {
+    $r: -#{$res};
+  }
+  // positions
+  @if $bm-positions {
+    .n-pt#{$r},
+    .pt#{$r}-0 {
+      top: 0 !important;
+    }
+
+    .n-pr#{$r},
+    .pr#{$r}-0 {
+      right: 0 !important;
+    }
+
+    .n-pb#{$r},
+    .pb#{$r}-0 {
+      bottom: 0 !important;
+    }
+
+    .n-pl#{$r},
+    .pl#{$r}-0 {
+      left: 0 !important;
+    }
+  }
+
+  // margins
+  @if $bm-margins {
+    .n-m#{$r},
+    .m#{$r}-0 {
+      margin: 0 !important;
+    }
+
+    @include disabling-classes(margin, $res);
+  }
+
+  // borders
+  @if $bm-borders {
+    .n-b#{$r},
+    .b#{$r}-0 {
+      border-width: 0 !important;
+    }
+
+    @include disabling-classes(border, $res);
+  }
+
+  // paddings
+  @if $bm-paddings {
+    .n-p#{$r},
+    .p#{$r}-0 {
+      padding: 0 !important;
+    }
+
+    @include disabling-classes(padding, $res);
+  }
+
+  // dimensions
+  @if $bm-dimensions {
+    .n-w#{$r},
+    .w#{$r}-0 {
+      width: 0 !important;
+    }
+
+    .n-h#{$r},
+    .h#{$r}-0 {
+      height: 0 !important;
+    }
+  }
+}
+
+@mixin all-main-classes($res: null) {
+  // positions
+  @if $bm-positions {
+    @include main-classes(position, $res);
+  }
+  
+  // margins
+  @if $bm-margins {
+    @include main-classes(margin, $res);
+  }
+
+  // borders
+  @if $bm-borders {
+    @include main-classes(border, $res);
+  }
+
+  // paddings
+  @if $bm-paddings {
+    @include main-classes(padding, $res);
+  }
+
+  // dimensions
+  @if $bm-dimensions {
+    @include main-classes(dimension, $res);
+  }
+}

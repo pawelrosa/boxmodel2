@@ -1,0 +1,23 @@
+//----------------------------------------------------------------------------//
+// BOXMODEL2 > VARS ----------------------------------------------------------//
+//----------------------------------------------------------------------------//
+
+$bm-values:         null !default;
+$bm-min-value:      5 !default;
+$bm-max-value:      30 !default;
+$bm-step:           5 !default;
+$bm-directions:     top, right, bottom, left, horizontal, vertical, all !default;
+
+$bm-positions:      false !default;
+$bm-margins:        true !default;
+$bm-borders:        false !default;
+$bm-paddings:       true !default;
+$bm-dimensions:     false !default;
+$bm-responsive:     false !default;
+
+$bm-screen-sm-min:  768px !default;
+$bm-screen-md-min:  992px !default;
+$bm-screen-lg-min:  1200px !default;
+$bm-screen-xs-max:  ($bm-screen-sm-min - 1) !default;
+$bm-screen-sm-max:  ($bm-screen-md-min - 1) !default;
+$bm-screen-md-max:  ($bm-screen-lg-min - 1) !default;

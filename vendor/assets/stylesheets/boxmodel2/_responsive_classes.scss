@@ -1,0 +1,25 @@
+//----------------------------------------------------------------------------//
+// BOXMODEL2 > RESPONSIVE_CLASSES---------------------------------------------//
+//----------------------------------------------------------------------------//
+
+@if $bm-responsive {
+  @media (max-width: $bm-screen-xs-max) {
+    @include all-disabling-classes(xs);
+    @include all-main-classes(xs);
+  }
+
+  @media (min-width: $bm-screen-sm-min) and (max-width: $bm-screen-sm-max) {
+    @include all-disabling-classes(sm);
+    @include all-main-classes(sm);
+  }
+
+  @media (min-width: $bm-screen-md-min) and (max-width: $bm-screen-md-max) {
+    @include all-disabling-classes(md);
+    @include all-main-classes(md);
+  }
+
+  @media (min-width: $bm-screen-lg-min) {
+    @include all-disabling-classes(lg);
+    @include all-main-classes(lg);
+  }
+}
