@@ -44,64 +44,64 @@ By default breakpoints are the same as in Twitter Bootstrap. You can change them
 - responsive: `m-b-xs-30`, `p-t-sm-20`, `b-md-3`, `pl-lg-10`.
 
 ###Naming convention
-- n -- no (disabling)
-- m -- margin
-- p -- padding
-- b -- border
-- pt -- position top
-- pr -- position right
-- pb -- position bottom
-- pl -- position left
-- w -- width
-- h -- height
-- l -- left
-- r -- right
-- t -- top
-- b -- bottom
-- v -- vertical
-- h -- horizontal
-- xs -- extra small
-- sm -- small
-- md -- medium
-- lg -- large
+- n - no (disabling)
+- m - margin
+- p - padding
+- b - border
+- pt - position top
+- pr - position right
+- pb - position bottom
+- pl - position left
+- w - width
+- h - height
+- l - left
+- r - right
+- t - top
+- b - bottom
+- v - vertical
+- h - horizontal
+- xs - extra small
+- sm - small
+- md - medium
+- lg - large
 
 ###Examples
-- `n-p` -- `padding: 0 !important`
-- `m-t--10` -- `margin-top: -10px !important`
-- `p-l-5` -- `padding-left: 5px !important`
-- `b-r-2` -- `border-width-right: 2px !important`
-- `pb-15` -- `bottom: 15px !important`
-- `h-20` -- `height: 20px !important`
-- `m-r-sm-30` -- `margin-right: 30px !important` only for small screens 
+- `n-p` - `padding: 0 !important`
+- `m-t--10` - `margin-top: -10px !important`
+- `p-l-5` - `padding-left: 5px !important`
+- `b-r-2` - `border-width-right: 2px !important`
+- `pb-15` - `bottom: 15px !important`
+- `h-20` - `height: 20px !important`
+- `m-r-sm-30` - `margin-right: 30px !important` only for small screens 
 
 ###Variables
 ####Generator variables
 Define values for classes generation.
 
- - `$bm-values` -- defines list of values which will be generated; type: `list`; default: `null`
- - `$bm-min-value` -- value from which classes will be generated; type: `number`; default: `5`
- - `$bm-max-value` -- classes generation will stop on this value; type: `number` -- default: `30`
- - `$bm-step` -- defines the distance from one class to the other; type: `number`; default: `5`
- - `$bm-directions` -- list of directions which classes will modify; type: `list`; default: `top, right, bottom, left, horizontal, vertical, all`
+ - `$bm-values` - defines list of values which will be generated; type: `list`; default: `null`
+ - `$bm-min-value` - value from which classes will be generated; type: `number`; default: `5`
+ - `$bm-max-value` - classes generation will stop on this value; type: `number`; default: `30`
+ - `$bm-step` - defines the distance from one class to the other; type: `number`; default: `5`
+ - `$bm-directions` - list of directions which classes will modify; type: `list`; default: `top, right, bottom, left, horizontal, vertical, all`
 
 ####Group variables
 Define which group of classes will be generated.
 
- - `$bm-positions` -- type: `boolean`; default: `false`
- - `$bm-margins`-- type: `boolean`; default: `true`
- - `$bm-borders` -- type: `boolean`; default: false
- - `$bm-paddings` -- type: `boolean`; default: `true`
- - `$bm-dimensions` -- type: `boolean`; default: `false`
+ - `$bm-positions` - type: `boolean`; default: `false`
+ - `$bm-margins`- type: `boolean`; default: `true`
+ - `$bm-borders` - type: `boolean`; default: false
+ - `$bm-paddings` - type: `boolean`; default: `true`
+ - `$bm-dimensions` - type: `boolean`; default: `false`
 
 ####Responsive variables
 Define breakpoints for responsive classes.
 
- - `$bm-screen-sm-min` -- type: `number`; default: `768px`
- - `$bm-screen-md-min` -- type: `number`; default: `992px`
- - `$bm-screen-lg-min` -- type: `number`; default: `1200px`
- - `$bm-screen-xs-max` -- type: `number`; default: `($bm-screen-sm-min - 1)`
- - `$bm-screen-sm-max` -- type: `number`; default: `($bm-screen-md-min - 1)`
- - `$bm-screen-md-max` -- type: `number`; default: `($bm-screen-lg-min - 1)`
+ - `$bm-screen-sm-min` - type: `number`; default: `768px`
+ - `$bm-screen-md-min` - type: `number`; default: `992px`
+ - `$bm-screen-lg-min` - type: `number`; default: `1200px`
+ - `$bm-screen-xs-max` - type: `number`; default: `($bm-screen-sm-min - 1)`
+ - `$bm-screen-sm-max` - type: `number`; default: `($bm-screen-md-min - 1)`
+ - `$bm-screen-md-max` - type: `number`; default: `($bm-screen-lg-min - 1)`
 
 ##Contributing
 
