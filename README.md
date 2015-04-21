@@ -92,9 +92,10 @@ Define which group of classes will be generated.
  - `$bm-borders` - type: `boolean`; default: false
  - `$bm-paddings` - type: `boolean`; default: `true`
  - `$bm-dimensions` - type: `boolean`; default: `false`
+ - `$bm-responsive` - type: `boolena`; default: `false`
 
 ####Responsive variables
-Define breakpoints for responsive classes.
+Define breakpoints for responsive classes. Set `$bm-responsive` to `true` first.
 
  - `$bm-screen-sm-min` - type: `number`; default: `768px`
  - `$bm-screen-md-min` - type: `number`; default: `992px`
